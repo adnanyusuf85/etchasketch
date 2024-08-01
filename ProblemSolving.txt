@@ -1,0 +1,18 @@
+define problem
+we want to have an etch a sketch game. 
+So this is how a physical etch a sketch works:
+1. Its a small tablet kind of toy, that looks like a small white board
+2. The user is able to use a pen like instrument / stylus to draw on the board
+3. If the user wants to erase the work, he slides a slider across the screen and the sketch is wiped out
+4. The user can then rework
+5. The slider is a button in digital versions
+6. Usually a light grid is seen on the etch a sketch board
+
+plan
+make a grid using divs and javascript but without using html grid functionality
+keep the grid a light gray color
+make the sketching based on pressure, with each hold on the div resulting in a slight darkening of the div
+
+
+pseudocode for laying out the divs based on number of grid points (divs)
+

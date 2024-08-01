@@ -1,0 +1,35 @@
+FUNCTION CreateBoard(rows: INT, columns: INT, board: Element)
+    DECLARE y, x as INTEGER
+    DECLARE row, cell as ELEMENT
+
+    FOR y FROM 0 to columns -1 DO
+        row = CREATE_ELEMENT("div")
+        ADD_CHILD(board, row)
+
+        FOR x FROM 0 TO rows -1 DO
+            cell ← CREATE_ELEMENT("cell")
+	        ADD_CLASS(cell, "cell_style")
+	        ADD_EVENT(cell,  "paintOnHover")
+	        ADD_CHILD(row, cell)
+        END FOR
+    END FOR  
+END FUNCTION
+
+
+FUNCTION PaintOnHover(cell: Element)
+	DECLARE alphaValue as INTEGER
+	alphaValue← GET_ALPHA_CHANNEL_VALUE(cell)
+	SET_ALPHA_CHANNEL_VALUE(cell, alphaValue+10)
+END FUNCTION
+
+
+FUNCTION ResetAllCells(board: ELEMENT)
+	DECLARE cells as ARRAY OF ELEMENT
+	cells ← SELECT_ALL_CELLS(board)
+
+	FOR EACH cell in cells DO
+		RESET_ALPHA(cell)
+	END FOR EACH  
+    
+END FUNCTION
+
