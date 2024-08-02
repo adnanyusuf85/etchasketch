@@ -4,6 +4,7 @@ FUNCTION CreateBoard(rows: INT, columns: INT, board: Element)
 
     FOR y FROM 0 to columns -1 DO
         row = CREATE_ELEMENT("div")
+        ADD_CLASS(cell, "row_style")
         ADD_CHILD(board, row)
 
         FOR x FROM 0 TO rows -1 DO
@@ -30,6 +31,6 @@ FUNCTION ResetAllCells(board: ELEMENT)
 	FOR EACH cell in cells DO
 		RESET_ALPHA(cell)
 	END FOR EACH  
-    
+
 END FUNCTION
 

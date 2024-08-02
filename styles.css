@@ -1,3 +1,27 @@
-p{
-    color:red;
+#playingboard
+{
+    width: 400px;
+    height: 400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+.board_row
+{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.board_cell
+{
+    border:1px solid rgba(136, 136, 136, 0.3);
+    background-color: rgba(0, 0, 0, 0);
+    flex-grow: 1;
+}
+.board_cell_inner
+{
+    width: 100%;
+    height: 100%;
 }
