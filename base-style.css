@@ -13,8 +13,19 @@
     padding:8px 24px;
 }
 
+input[type=text]
+{
+    height:32px;
+    padding:8px;
+}
+
 .algn-cntr{
     margin:0 auto;
+    display: block;
+}
+
+.dp-block
+{
     display: block;
 }
 
@@ -28,6 +39,14 @@
 
 .text-center{
     text-align: center;
+}
+
+.mt-8{
+    margin-top: 8px;
+}
+
+.mt-16{
+    margin-top: 16px;
 }
 .mt-32{
     margin-top: 32px;

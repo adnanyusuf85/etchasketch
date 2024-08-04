@@ -1,9 +1,14 @@
 let playingBoard = document.getElementById("playingboard");
+let eraseButton = document.getElementById("reset-game");
+eraseButton.addEventListener('click', ()=>styleCells(boardCells,'rgb(0,0,0)'));
 
-createBoard(16, 32, playingBoard);
-let boardCells = playingBoard.querySelectorAll('.board_cell_inner');
-styleCells(boardCells, 'rgb(0,0,0)');
-addMouseOverEventToCells(boardCells);
+let gridSizeInput = document.getElementById("grid-size");
+gridSizeInput.addEventListener('click', gridSizeChange);
+
+let boardSize = 64;
+const eventClick = new Event("click");
+gridSizeInput.dispatchEvent(eventClick);
+
 
 function createBoard(numOfRows, numOfColumns, boardElement) 
 {
@@ -28,16 +33,16 @@ function createBoard(numOfRows, numOfColumns, boardElement)
 function paintCell(event)
 {   
     let presentOpacity = Number(event.srcElement.style.opacity);
-    event.srcElement.style.opacity = 0.1  + presentOpacity;
+    event.srcElement.style.opacity = 0.3  + presentOpacity;
 }
 
-function styleCells(cells, color)
+function styleCells(cells, color, size)
 {
     cells.forEach(boardCell => {
         boardCell.style.backgroundColor = color;
         boardCell.style.opacity = 0;       
-        boardCell.style.width = "16px";
-        boardCell.style.height = "16px";
+        boardCell.style.width = (640/size-2).toString() + "px";
+        boardCell.style.height = (640/size-2).toString() + "px";
     });
     
 }
@@ -49,3 +54,20 @@ function addMouseOverEventToCells(cells)
     });
 
 }
+
+function gridSizeChange(event)
+{
+    let newBoardSize = event.srcElement.value;
+    if (newBoardSize == boardSize)
+    {
+        return;
+    }
+
+    
+    playingBoard.innerHTML ='';
+    createBoard(boardSize,boardSize, playingBoard);
+    let boardCells = playingBoard.querySelectorAll('.board_cell_inner');
+    styleCells(boardCells, 'rgb(0,0,0)',boardSize);
+    addMouseOverEventToCells(boardCells);
+}
+
