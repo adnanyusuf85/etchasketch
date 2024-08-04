@@ -4,14 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etch A Sketch</title>
+    <link rel="stylesheet" href="./base-style.css"/>
     <link rel="stylesheet" href="./styles.css"/>
     <script src="./script.js" defer></script>
 </head>
 <body>
-
-        <div id="playingboard">
-
+    <div id="container">
+        <div id="Title">
+            <p class="fs-4 text-left">Etch-A-Sketch</p>
+            <p class="fs-1 text-left">Developed by Adnan Yusuf</p>
         </div>
-    
+        <div id="sketch-area" class="mt-32">
+            <div id="playingboard" class="algn-left"></div>
+            <div id="controls" class="algn-right">
+            <button id="reset-game" class="button-small fs-2 ">Erase Board</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

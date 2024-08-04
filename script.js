@@ -1,6 +1,9 @@
 let playingBoard = document.getElementById("playingboard");
 
-createBoard(16, 16, playingBoard);
+createBoard(16, 32, playingBoard);
+let boardCells = playingBoard.querySelectorAll('.board_cell_inner');
+styleCells(boardCells, 'rgb(0,0,0)');
+addMouseOverEventToCells(boardCells);
 
 function createBoard(numOfRows, numOfColumns, boardElement) 
 {
@@ -14,12 +17,8 @@ function createBoard(numOfRows, numOfColumns, boardElement)
         {
             let cellborder = document.createElement('div');
             cellborder.classList.add("board_cell");
-
             let cell = document.createElement('div');
-            cell.style.backgroundColor = "rgba(0,0,0)";
-            cell.style.opacity = 0.1;
-            cell.addEventListener("mouseenter",paintCell);
-
+            cell.classList.add('board_cell_inner');
             cellborder.appendChild(cell);
             row.appendChild(cellborder);
         }
@@ -29,6 +28,24 @@ function createBoard(numOfRows, numOfColumns, boardElement)
 function paintCell(event)
 {   
     let presentOpacity = Number(event.srcElement.style.opacity);
-    event.srcElement.style.opacity = 0.1 + presentOpacity;
-    console.log(event.srcElement.style.opacity)
+    event.srcElement.style.opacity = 0.1  + presentOpacity;
+}
+
+function styleCells(cells, color)
+{
+    cells.forEach(boardCell => {
+        boardCell.style.backgroundColor = color;
+        boardCell.style.opacity = 0;       
+        boardCell.style.width = "16px";
+        boardCell.style.height = "16px";
+    });
+    
+}
+
+function addMouseOverEventToCells(cells)
+{
+    cells.forEach(boardCell => {
+        boardCell.addEventListener("mouseenter",paintCell);
+    });
+
 }
